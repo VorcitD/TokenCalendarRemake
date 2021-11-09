@@ -1,0 +1,13 @@
+<div class="background">
+  <div class="login-container">
+    <section>
+      <h1>Faça seu Login</h1>
+      <form>
+        <input [(ngModel)]="user.email" name="email" placeholder="Email" type="email" />
+        <input [(ngModel)]="user.password" name="password" placeholder="Senha" type="password" />
+        <button type="submit" (click)="handleLogin()">Entrar</button>
+        <a routerLink="/SignUp">Não tenho cadastro</a>
+      </form>
+    </section>
+  </div>
+</div>

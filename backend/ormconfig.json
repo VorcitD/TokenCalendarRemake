@@ -1,0 +1,15 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "victor123",
+  "database": "tokenlab_mysql",
+  "entities": ["./src/models/**/**.ts"],
+
+  "migrations": ["./src/database/migrations/*.ts"],
+  "cli": {
+    "entitiesDir": "./src/models",
+    "migrationsDir": "./src/database/migrations"
+  }
+}
