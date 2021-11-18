@@ -40,7 +40,7 @@ export default class EventsResolver {
 
     const user = await this.UserRepository.findOne(user_id);
     if (user) {
-      const newEvent = await this.EventsRepository.create({
+      const newEvent = this.EventsRepository.create({
         user,
         description,
         init_date,
@@ -64,6 +64,8 @@ export default class EventsResolver {
     const dateNow = Date.now();
 
     const updatedEvent = await this.EventsRepository.findOne(id);
+
+    console.log('CHEGOU NO BACKEND A REQUISIÇÃO')
 
     if (updatedEvent) {
       if (description) {

@@ -1,0 +1,27 @@
+<div class="modal">
+    <div class="modal-container">
+      <div class="top-modal-container">
+        <h1>Atualize seu evento</h1>
+        <div (click)="modalHandler()" class="close-button">
+          <i data-feather="x"></i>
+        </div>
+      </div>
+      <div class="new-event-form-container">
+        <form #f='ngForm' (ngSubmit)="handleUpdateEvent()">
+          
+          <h2>Data e Hora de Inicio</h2>
+          <input [(ngModel)]="event.init_date" type="datetime-local" placeholder="Data e hora de inicio" name="init_date" />
+          
+          <h2>Data e Hora de Término</h2>
+          <input [(ngModel)]="event.end_date"  type="datetime-local" placeholder="Data e hora de término" name="end_date" />
+          
+          <h2>Descrição do Evento</h2>
+          <input [(ngModel)]="event.description" class="event-input" type="text" placeholder="Descrição" name="description" />
+          
+          <button [ngStyle]="{'cursor':(f.valid ? 'pointer':'not-allowed')}" [disabled]="!f.valid" class="submit-event" type="submit">Cadastrar</button>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+  

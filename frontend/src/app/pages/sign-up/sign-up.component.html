@@ -1,20 +1,27 @@
 <div class="signup-container">
+  <div class="modal-sucess"></div>
+  <div class="modal-failure"></div>
     <div class="form-container">
-      <form>
+      <form #f='ngForm' (ngSubmit)="handleSignUp()">
         <h1>Bem vindo!</h1>
   
         <p>Crie sua conta preenchendo os campos abaixo</p>
   
-        <input type="text" placeholder="Nome Completo" />
+        <input [(ngModel)]="user.name" name="name"type="text" placeholder="Nome Completo" required />
   
-        <input type="email" placeholder="E-mail" />
+        <input [(ngModel)]="user.email" name="email" type="email" placeholder="E-mail" required email/>
   
-        <input type="password" placeholder="Senha" />
+        <input [(ngModel)]="user.password" name="password" type="password" placeholder="Senha" required/>
   
-        <input type="password" placeholder="Confirme sua senha" />
-  
-        <button className="button-signup" type="submit">Cadastrar</button>
+        <input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" placeholder="Confirme sua senha" required/>
+
+        <p [ngStyle]="{ 'color':(validatePassword ? 'white':'red') }" *ngIf="!validatePassword"> As senhas não coincidem </p>
+        
+        <button  [ngStyle]="{'cursor':(f.valid ? 'pointer':'not-allowed')}" [disabled]="!f.valid" className="button-signup" type="submit">Cadastrar</button>
         <a routerLink="/"> Já tenho cadastro </a>
+
+        
+
       </form>
   
       

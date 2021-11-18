@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   user: User = new User();
   private data: any;
+  validateLogin=true;
   
   constructor(private authService: AuthService,private router:Router
     ) {}
@@ -26,6 +27,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token',token);
           localStorage.setItem('id',id);
           this.router.navigate(['/Events'])
+        },
+        (error)=>{
+          this.validateLogin=false;
         }
       );
   }

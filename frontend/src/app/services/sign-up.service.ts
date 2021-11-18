@@ -26,8 +26,8 @@ export class SignUpService extends Mutation {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        createSession: {
-          __typename: 'CreateUser',
+        createUser: {
+          __typename: 'createUser',
         },
       },
     });

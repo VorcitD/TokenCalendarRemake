@@ -19,15 +19,28 @@ header {
   }
 }
 
+.page-container {
+  .top-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
-.page-container{
-    .events-action{
-        display: flex;
-        justify-content: space-around;
-        h1,h2{
-            margin-top: 30px;
-        }
-    }
+  .date-selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .button-submit-event {
+    width: 200px;
+    height: 60px;
+    background-color: #156efc;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+  }
 }
 .event-container {
   max-width: 1400px;
@@ -63,8 +76,20 @@ header {
     .calendar-description {
       padding: 30px;
       word-wrap: break-word;
-      height: 150px;
+      height: 120px;
       overflow: auto;
+    }
+    .event-container-actions{
+      display: flex;
+      justify-content: flex-end;
+      background-color: #ffffff;
+      img{
+        height: 15px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    
     }
   }
 }
+

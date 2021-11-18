@@ -22,13 +22,13 @@ export class createEvent1634838169445 implements MigrationInterface {
                     {
                         name: 'init_date',
                         isNullable:false,
-                        type: 'datetime',
+                        type: 'timestamp',
                         isUnique: true,
                     },
                     {
                         name: 'end_date',
                         isNullable:false,
-                        type: 'datetime',
+                        type: 'timestamp',
                         isUnique: true,
                     },
                     {

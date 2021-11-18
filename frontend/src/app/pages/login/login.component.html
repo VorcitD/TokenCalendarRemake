@@ -2,10 +2,11 @@
   <div class="login-container">
     <section>
       <h1>Faça seu Login</h1>
-      <form>
-        <input [(ngModel)]="user.email" name="email" placeholder="Email" type="email" />
-        <input [(ngModel)]="user.password" name="password" placeholder="Senha" type="password" />
-        <button type="submit" (click)="handleLogin()">Entrar</button>
+      <form #f='ngForm' (ngSubmit)="handleLogin()">
+        <p class="error-message" [ngStyle]="{ 'color':(validateLogin ? 'white':'red') }" [hidden]="validateLogin"> Usuário ou senha incorretos </p>
+        <input [(ngModel)]="user.email" name="email" placeholder="Email" type="email" required email />
+        <input [(ngModel)]="user.password" name="password" placeholder="Senha" type="password" required />
+        <button [ngStyle]="{'cursor':(f.valid ? 'pointer':'not-allowed')}" [disabled]="!f.valid" type="submit">Entrar</button>
         <a routerLink="/SignUp">Não tenho cadastro</a>
       </form>
     </section>

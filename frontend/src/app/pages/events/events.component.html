@@ -3,77 +3,47 @@
   <button class="logout">Log out</button>
 </header>
 
+<app-new-event-modal *ngIf="isNewEventModalActive" (closeModal)="newEventModalActivator()"></app-new-event-modal>
+<app-update-event-modal *ngIf="isUpdateEventModalActive" (closeModal)="updateEventModalActivator(updateEvent)" [updateEvent]="updateEvent" ></app-update-event-modal>
+
+<!-- Página de Eventos -->
+
 <div class="page-container">
-    <div class="events-action">
-        <h2><</h2>
-        <h1>Mês e Ano</h1>
-        <h2>></h2>
+  <div class="events-action">
+    <div class="top-container">
+      <h1 class="title">Calendário de Eventos</h1>
+      <button
+        class="button-submit-event" (click)="newEventModalActivator()"
+      >
+        Novo Evento
+      </button>
     </div>
+    <div class="date-selector-container">
+      <i data-feather="arrow-left"></i>
+      <h1>Mês e Ano</h1>
+      <i data-feather="arrow-right"></i>
+    </div>
+  </div>
   <div class="event-container">
-    <div class="calendar-container">
+    <div *ngFor="let event of this.events" class="calendar-container">
       <div class="calendar-date">
-        <h2>Dia e Mês de inicio</h2>
+        <h2>{{ event.init_date | date: "mediumDate" }}</h2>
       </div>
       <div class="calendar-description">
         <ul>
-          <li>Horário de inicio:</li>
-          <li>Horário de término:</li>
+          <li>Horário de inicio:{{ event.init_date | date: "shortTime" }}</li>
+          <li>Horário de término:{{ event.end_date | date: "shortTime" }}</li>
         </ul>
         <p>
-          Nesse espaço vamos ter a descrição do nosso evento Nesse espaço vamos
-          ter a descrição do nosso evento Nesse espaço vamos ter a descrição do
-          nosso evento Nesse espaço vamos ter a descrição do nosso evento
+          {{ event.description }}
         </p>
       </div>
-    </div>
-
-    <div class="calendar-container">
-      <div class="calendar-date">
-        <h2>Dia e Mês de inicio</h2>
-      </div>
-      <div class="calendar-description">
-        <ul>
-          <li>Horário de inicio:</li>
-          <li>Horário de término:</li>
-        </ul>
-        <p>Nesse espaço vamos ter a descrição do nosso evento.</p>
-      </div>
-    </div>
-    <div class="calendar-container">
-      <div class="calendar-date">
-        <h2>Dia e Mês de inicio</h2>
-      </div>
-      <div class="calendar-description">
-        <ul>
-          <li>Horário de inicio:</li>
-          <li>Horário de término:</li>
-        </ul>
-        <p>Nesse espaço vamos ter a descrição do nosso evento</p>
-      </div>
-    </div>
-    <div class="calendar-container">
-      <div class="calendar-date">
-        <h2>Dia e Mês de inicio</h2>
-      </div>
-      <div class="calendar-description">
-        <ul>
-          <li>Horário de inicio:</li>
-          <li>Horário de término:</li>
-        </ul>
-        <p>Nesse espaço vamos ter a descrição do nosso evento</p>
-      </div>
-    </div>
-    <div class="calendar-container">
-      <div class="calendar-date">
-        <h2>Dia e Mês de inicio</h2>
-      </div>
-      <div class="calendar-description">
-        <ul>
-          <li>Horário de inicio:</li>
-          <li>Horário de término:</li>
-        </ul>
-        <p>Nesse espaço vamos ter a descrição do nosso evento</p>
+      <div class="event-container-actions">
+        <img (click)="updateEventModalActivator(event)" src="../../../assets/edit.svg" alt="Edit Event">
+        <img (click)="handleDeleteEvent(event)" src="../../../assets/trash.svg" alt="Delete Event">
       </div>
     </div>
   </div>
 </div>
+
+<script>feather.replace()</script>
